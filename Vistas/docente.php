@@ -2,7 +2,7 @@
                         <div class="row">
                             <br>
                             <div class="col-sm-10 col-sm-offset-1">
-                                <form action="Docentes.php" class="form-horizontal" method="post">
+                                <form action="index.php?controller=Docente&action=CreateOrUpdate" class="form-horizontal" method="post">
                                     <div class="form-group">
                                         <div class="col-xs-12 col-sm-2 col-sm-offset-5">
                                             <center><h4>Foto Perfil</h4></center>
@@ -13,7 +13,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-12 col-sm-6">
-                                            <input type="text" class="form-control" name="id" placeholder="Documento Identidad" value='<?php  if(isset($docentes_up)){echo $docentes_up['id_documento'];}?>' >
+                                            <input type="text" class="form-control" name="identificacion" placeholder="Documento Identidad" value='<?php  if(isset($docentes_up)){echo $docentes_up['id_documento'];}?>' >
                                         </div>
                                          <div class="col-xs-12 col-sm-6">
                                             <input type="text" class="form-control" name="nombre" placeholder="Nombres Completos" value='<?php  if(isset($docentes_up)){echo $docentes_up['nombre_completo'];}?>'>
@@ -25,7 +25,7 @@
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
                                             <div class="input-group">
-                                                <input type="date" class="form-control" name="fecha" placeholder="Fecha Nacimiento" value='<?php  if(isset($docentes_up)){echo $docentes_up['fecha_nacimiento'];}?>'>
+                                                <input type="date" class="form-control" name="fecha_nacimiento" placeholder="Fecha Nacimiento" value='<?php  if(isset($docentes_up)){echo $docentes_up['fecha_nacimiento'];}?>'>
                                                 <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-12 col-sm-6">
-                                            <input type="Email" class="form-control" name="email" placeholder="Email" required value='<?php  if(isset($docentes_up)){echo $docentes_up['email'];}?>'>
+                                            <input type="Email" class="form-control" name="email" placeholder="Email" value='<?php  if(isset($docentes_up)){echo $docentes_up['email'];}?>'>
                                         </div>
                                          <div class="col-xs-12 col-sm-6">
                                             <div class="input-group">
@@ -66,10 +66,10 @@
                                     </div>
                                     <div class="form-group botones-formulario">
                                         <div class="col-xs-12 col-sm-3 col-sm-offset-3">
-                                            <button class="btn btn-success" name="crud" value="Docentes.php?action=registrar">Registrar</button>
+                                            <button class="btn btn-success" name="crud" value="insertar">Registrar</button>
                                         </div>
                                         <div class="col-xs-12 col-sm-3 botones-formulario">
-                                            <button class="btn btn-warning" name="crud" value="Docentes.php?action=update">Editar</button>
+                                            <button class="btn btn-warning" name="crud" value="actualizar">Editar</button>
                                         </div>
                                     </div>
                                 </form>
@@ -115,48 +115,48 @@
                                             <span class="glyphicon glyphicon-pencil"></span> 
                                         </th>
                                     </tr>
-                                    <?php  while($docentes = mysql_fetch_assoc($lista_docentes)){  ?>
+                                    <?php  while($docente = mysqli_fetch_assoc($docentes)){  ?>
                                     <tr>
                                         <td>
                                             <?php ?>
-                                            <?php echo $docentes['id_documento'] ?>
+                                            <?php echo $docente['id_documento'] ?>
                                         </td>
                                         <td>
-                                           <?php echo $docentes['nombre_completo'] ?>
+                                           <?php echo $docente['nombre_completo'] ?>
                                         </td>
                                         <td>
-                                            <?php echo $docentes['apellido_completo'] ?>
+                                            <?php echo $docente['apellido_completo'] ?>
                                           
                                         </td>
                                         <td>
-                                            <?php echo $docentes['email'] ?>
+                                            <?php echo $docente['email'] ?>
                                         </td>
                                         <td>
-                                            <?php echo $docentes['fecha_nacimiento'] ?>
+                                            <?php echo $docente['fecha_nacimiento'] ?>
                                         </td>
                                         <td>
-                                           <?php echo $docentes['telefono'] ?>
+                                           <?php echo $docente['telefono'] ?>
                                         </td>
                                         <td>
-                                           <?php echo $docentes['categoria'] ?>
+                                           <?php echo $docente['categoria'] ?>
                                         </td>
                                         <td>
-                                           <?php echo $docentes['oficina'] ?>
+                                           <?php echo $docente['oficina'] ?>
                                         </td>
                                         <td>
-                                           <?php echo $docentes['valor_horas'] ?>
+                                           <?php echo $docente['valor_horas'] ?>
                                         </td>
                                         <td>
-                                           <center><a class="btn btn-danger btn-delete" href="Docentes.php?action=delete&id=<?php echo $docentes['id_documento'] ?>"><span class="glyphicon glyphicon-remove"></span></a> </center>
+                                           <center><a class="btn btn-danger btn-delete" href="index.php?controller=Docente&action=Eliminar&id=<?php echo $docente['id_documento'] ?>"><span class="glyphicon glyphicon-remove"></span></a> </center>
                                         </td>
                                         <td>
-                                            <center><a class="btn btn-success btn-editar" href="Docentes.php?action=update&id=<?php echo $docentes['id_documento'] ?>"><span class="glyphicon glyphicon-ok"></span> </a></center>
+                                            <center><a class="btn btn-success btn-editar" href="index.php?controller=Docente&action=Actualizar&id=<?php echo $docente['id_documento'] ?>"><span class="glyphicon glyphicon-ok"></span> </a></center>
                                         </td>
                                     </tr>
                                     <?php }?>
                                 </table>
                                 <hr class="separator">
-                                <?php $pagination-> render(); ?>
+                                  <?php  libcontroller::pagination_render('DocenteModel')->render(); ?>
                             </div>
                         </div>
                        <!-- Cierra Container-Fluid  -->

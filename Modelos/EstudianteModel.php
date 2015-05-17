@@ -18,7 +18,7 @@ class EstudianteModel extends MasterModel
     }
     public static function getall($inicio,$fin)
 	{   
-		$query=("SELECT e.*,p.*,c.* from " . static::$table ." e inner join persona p on (e.id_documento=p.id_documento) inner join carrera c on(e.id_carrera=c.id_carrera)  order by p.id_documento limit $inicio,$fin"); 
+		$query=("SELECT e.*,p.*,c.* FROM " . static::$table ." e INNER JOIN persona p on (e.id_documento=p.id_documento) INNER JOIN carrera c on(e.id_carrera=c.id_carrera)  ORDER BY p.id_documento LIMIT $inicio,$fin"); 
         return static::query($query);
 	}
     public static function actualizar($data)
@@ -28,7 +28,7 @@ class EstudianteModel extends MasterModel
     }
     public static function find($id)
     {
-        $query="select p.id_documento,p.nombre_completo,p.apellido_completo,e.apodo,p.email,p.fecha_nacimiento,c.nombre_carrera,c.id_carrera from " . static::$table ." e inner join persona p on (e.id_documento=p.id_documento) inner join carrera c on(e.id_carrera=c.id_carrera) where p.id_documento='$id'";
+        $query="SELECT p.id_documento,p.nombre_completo,p.apellido_completo,e.apodo,p.email,p.fecha_nacimiento,c.nombre_carrera,c.id_carrera FROM " . static::$table ." e INNER JOIN persona p on (e.id_documento=p.id_documento) INNER JOIN carrera c on(e.id_carrera=c.id_carrera) WHERE p.id_documento='$id'";
         return static::query($query);  
     }
 		

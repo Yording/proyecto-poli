@@ -3,7 +3,7 @@
                         <div class="row">
                             <br>
                             <div class="col-sm-10 col-sm-offset-1">
-                                <form action="index.php?controller=Estudiante&action=Crud" class="form-horizontal" method="post" id="crud_student">
+                                <form action="index.php?controller=Estudiante&action=CreateOrUpdate" class="form-horizontal" method="post" id="crud_student">
                                     <div class="form-group">
 
                                         <div class="col-xs-12 col-sm-2 col-sm-offset-5">

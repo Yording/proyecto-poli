@@ -15,28 +15,37 @@
                 <div class="col-xs-12 col-sm-2 contenedor-lateral">
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="nombre-perfil"> <span><?php echo $_SESSION['profile']?></span></div>
+                            <div class="nombre-perfil"> <span><?php echo $_SESSION['profile'] ?></span></div>
                             <center><img src="public/CSS/Images/user-icon1.png" class="img-responsive img-thumbnail foto-perfil"></center>
                             <div class="btn-group btn-group-justified btn-menu-perfil">
                                 <a href="#" class="btn btn-default active"><span class="glyphicon glyphicon-home"></span></a>
                                 <a href="#" class="btn btn-default"><span class="entypo-cog"></span></a>
                                 <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-bell"></span></a>
-                                <a href="Homes.php?action=cerrar_sesion" class="btn btn-default"><span class="glyphicon glyphicon-off"></span></a>
+                                <a href="index.php?controller=Login&action=cerrarSesion" class="btn btn-default"><span class="glyphicon glyphicon-off"></span></a>
                             </div>
                         </div>     
                     </div>
                     <hr>
-                    <div class="row">
+                   <div class="row">
                         <nav>
                             <div class="btn-group-vertical menu-principal col-sm-12">
-                                <a class="btn btn-primary" href="Materias.php">Materias</a>
+                                <a class="btn btn-primary" id="dropdown-materias">Materias <span  class="glyphicon glyphicon-menu-down span-menu"></span></a>
+                                <ul class="sub-menu" id="menu-materias">
+                                    <li><a href="index.php?controller=Materia&action=Registrar" class="btn botones-secundarios">Inscribir Materias</a></li>
+                                    <li><a href="" class="btn botones-secundarios">Inscribir Estudiantes</a></li>
+                                    <li><a href="" class="btn botones-secundarios">Inscribir Docentes</a></li>
+                                </ul>
                                 <a class="btn btn-primary" href="Ver Notas.html">Ver Notas</a>
                                 <a class="btn btn-primary" href="">Calificar Docente</a>
-                                 <a class="btn btn-primary" href="carreras.php">Carreras</a>
-                                 <a class="btn btn-primary" href="Usuarios.php">Usuarios Sistema</a>
-                                 <a class="btn btn-primary" href="Docentes.php">Docentes</a>
-                                <a class="btn btn-primary" href="Estudiantes.php">Estudiantes</a>
-                                 <a class="btn btn-primary" href="Notas.html">Notas</a>
+                                <a class="btn btn-primary" id="dropdown-carreras">Carreras <span  class="glyphicon glyphicon-menu-down span-menu"></span></a>
+                                <ul class="sub-menu" id="menu-carreras">
+                                    <li><a href="index.php?controller=Carrera&action=Registrar" class="btn botones-secundarios">Inscribir Carreras</a></li>
+                                    <li><a href="" class="btn botones-secundarios">Inscribir Docentes</a></li>
+                                </ul>
+                                <a class="btn btn-primary" href="index.php?controller=Usuario&action=Registrar">Usuarios Sistema</a>
+                                <a class="btn btn-primary" href="index.php?controller=Docente&action=Registrar">Docentes</a>
+                                <a class="btn btn-primary" href="index.php?controller=Estudiante&action=Registrar">Estudiantes</a>
+                                <a class="btn btn-primary" href="index.php?controller=Nota&action=Registrar">Notas</a>
                             </div>
                         </nav>
                     </div>

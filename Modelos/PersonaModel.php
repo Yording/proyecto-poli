@@ -5,7 +5,7 @@ class PersonaModel extends MasterModel
 
 	public static function insertar($data)
 	{
-		 $query = "INSERT INTO " . static::$table . " (id_documento,id_rol,nombre_completo,apellido_completo,fecha_nacimiento,email,usuario,password) VALUES ('{$data['id_documento']}', '3', '{$data['nombre']}', '{$data['apellido']}', '{$data['fecha']}', '{$data['email']}', 'null', 'null')";
+		 $query = "INSERT INTO " . static::$table . " (id_documento,id_rol,nombre_completo,apellido_completo,fecha_nacimiento,email,usuario,password) VALUES ('{$data['id_documento']}', '{$data['id_rol']}', '{$data['nombre']}', '{$data['apellido']}', '{$data['fecha']}', '{$data['email']}', 'null', 'null')";
 		  static::query($query);
 	}
 	public static function getallestudiantes()

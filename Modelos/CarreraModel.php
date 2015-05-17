@@ -4,7 +4,7 @@ class CarreraModel extends MasterModel
 
 	    static $table = 'carrera';
 
-	    public static function getall_actualizar($id)
+	    public static function getAllActualizar($id)
 	{
 		$query="select id_carrera,nombre_carrera from ". static::$table." order by id_carrera='$id' desc";
 		return static::query($query);

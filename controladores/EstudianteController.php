@@ -8,12 +8,10 @@
         $data['carreras']=CarreraModel::all();
        
         $data['students']=LibController::Zebra_Pagination('EstudianteModel');
-        View::load('Include/Header', $data);
-         View::load('Estudiante', $data);
-         View::load('Include/Footer', $data);
+         Session::validatePage('Estudiante', $data);
     }
 
-    public function postCrud($request) {
+    public function postCreateOrUpdate($request) {
         $action=$request['crud'];
         $data=['id_documento' => $request['identificacion'],
         'nombre' => $request['nombre'],
@@ -21,7 +19,8 @@
         'fecha' =>$request['fecha_nacimiento'],
         'email' => $request['email'], 
         'carrera' =>$request['carrera'],
-        'apodo' => $request['apodo'] ];
+        'apodo' => $request['apodo'],
+        'id_rol' =>'3'];
         PersonaModel::$action($data);
         EstudianteModel::$action($data);
 
@@ -41,12 +40,10 @@
               $id = $_GET['id'];
               $data['estudiantes_up'] = EstudianteModel::find($id);
               $estudiantes_up=$data['estudiantes_up']->fetch_assoc();
-              $data['carreras']=CarreraModel::getall_actualizar($estudiantes_up['id_carrera']);
+              $data['carreras']=CarreraModel::getAllActualizar($estudiantes_up['id_carrera']);
               $data['students']=LibController::Zebra_Pagination('EstudianteModel');;
               $data['estudiantes_up']=$estudiantes_up;
-              View::load('Include/Header', $data);
-              View::load('Estudiante', $data);
-              View::load('Include/Footer', $data);
+              View::loadPage('Estudiante', $data);
           }
           else
           {

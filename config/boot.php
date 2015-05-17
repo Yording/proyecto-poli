@@ -14,7 +14,7 @@ define("BASE_CONTROLLERS",'/controladores');
 define("BASE_VIEWS",'/Vistas');
 define("BASE_CLASSES",'/clases');
 define("BASE_CONFIG",'/config');
-define("BASE_LIBS",'/Lib');
+define("BASE_LIBS",'/public/Lib');
 
 
 //load the folders
