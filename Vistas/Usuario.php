@@ -2,11 +2,11 @@
                         <div class="row">
                             <br>
                             <div class="col-sm-10 col-sm-offset-1">
-                                <form action="" class="form-horizontal">
+                                <form action="index.php?controller=Usuario&action=actualizar" method="post" class="form-horizontal">
                                     <div class="form-group">
                                         <div class="col-sm-4 col-sm-offset-4">
                                             <div class="input-group">
-                                              <input type="text" class="form-control" placeholder="Documento Identidad">
+                                              <input type="text" class="form-control" name='identificacion' placeholder="Documento Identidad" value='<?php if(isset($usuarios_up)){echo $usuarios_up['id_documento'];}?>'>
                                               <span class="input-group-btn">
                                                 <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
                                               </span>
@@ -15,31 +15,27 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-12 col-sm-6">
-                                            <input type="text" class="form-control" placeholder="Nombre" disabled>
+                                            <input type="text" class="form-control" name='nombre' placeholder="Nombre" value='<?php if(isset($usuarios_up)){echo $usuarios_up['nombre_completo'];}?>' disabled>
                                         </div>
                                         <div class="col-xs-12 col-sm-6">
-                                            <input type="number" class="form-control" placeholder="Apellido" disabled>
+                                            <input type="text" class="form-control" name='apellido' placeholder="Apellido" value='<?php if(isset($usuarios_up)){echo $usuarios_up['apellido_completo'];}?>' disabled>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-12 col-sm-6">
-                                          <select class="combobox">
-                                            <option value="">Profesor</option>
-                                            <option value="">Alumno</option>
-                                            <option value="">Administrador</option>
-                                          </select>
+                                           <input type="text" class="form-control" name='rol' placeholder="Rol" value='<?php if(isset($usuarios_up)){echo $usuarios_up['rol'];}?>' disabled>
                                         </div>
                                          <div class="col-sm-6">
                                             <div class="input-group">
                                               <span class="input-group-addon" id="sizing-addon2"><span class="glyphicon glyphicon-user"></span></span>
-                                              <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2">
+                                              <input type="text" class="form-control" name='user' placeholder="Username" aria-describedby="sizing-addon2">
                                             </div>
                                          </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-6">
                                             <div class="input-group">
-                                              <input type="Password" class="form-control" placeholder="Password">
+                                              <input type="text" class="form-control" name='pass' placeholder="Password">
                                               <span class="input-group-btn">
                                                 <button class="btn btn-default" type="button"><span class="entypo-key"></span></button>
                                               </span>
@@ -47,14 +43,8 @@
                                         </div><!-- /.col-lg-6 -->
                                     </div>
                                     <div class="form-group botones-formulario">
-                                        <div class="col-xs-12 col-sm-4">
-                                            <button class="btn btn-success">Registrar</button>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4 botones-formulario">
+                                        <div class="col-xs-12 col-sm-4 col-sm-offset-4 botones-formulario">
                                             <button class="btn btn-warning">Editar</button>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4 botones-formulario">
-                                            <button class="btn btn-info">Eliminar</button>
                                         </div>
                                     </div>
                                 </form>
@@ -84,88 +74,39 @@
                                         <th>
                                             Password
                                         </th>
+                                        <th>
+                                            <span class="glyphicon glyphicon-pencil"></span> 
+                                        </th>
                                     </tr>
+                                    <?php  while($usuario = mysqli_fetch_assoc($usuarios)){  ?>
                                     <tr>
                                         <td>
-                                            1
+                                            <?php echo $usuario['id_documento'] ?>
                                         </td>
                                         <td>
-                                           
+                                           <?php echo $usuario['nombre_completo'] ?>
                                         </td>
                                         <td>
-                                           
+                                            <?php echo $usuario['apellido_completo'] ?>
+                                          
                                         </td>
                                         <td>
-                                           
+                                            <?php echo $usuario['rol'] ?>
                                         </td>
                                         <td>
-                                            
+                                            <?php echo $usuario['usuario'] ?>
                                         </td>
                                         <td>
-                                            
+                                            <?php echo $usuario['password'] ?>
+                                        </td>
+                                        <td>
+                                            <center><a class="btn btn-success btn-editar" href="index.php?controller=Usuario&action=Actualizar&id=<?php echo $usuario['id_documento'] ?>&rol=<?php echo $usuario['rol'] ?>"><span class="glyphicon glyphicon-ok"></span> </a></center>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            2
-                                        </td>
-                                        <td>
-                                           
-                                        </td>
-                                        <td>
-                                           
-                                        </td>
-                                        <td>
-                                           
-                                        </td>
-                                        <td>
-                                            
-                                        </td>
-                                        <td>
-                                            
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            3
-                                        </td>
-                                       <td>
-                                           
-                                        </td>
-                                        <td>
-                                           
-                                        </td>
-                                        <td>
-                                           
-                                        </td>
-                                        <td>
-                                            
-                                        </td>
-                                        <td>
-                                            
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            4
-                                        </td>
-                                        <td>
-                                           
-                                        </td>
-                                        <td>
-                                           
-                                        </td>
-                                        <td>
-                                           
-                                        </td>
-                                        <td>
-                                            
-                                        </td>
-                                        <td>
-                                            
-                                        </td>
-                                    </tr>
+                                    <?php }?>
                                 </table>
+                                <hr class="separator">
+                                <?php  libcontroller::pagination_render('UsuarioModel')->render(); ?>
                             </div>
                         </div>
                        <!-- Cierra Container-Fluid  -->

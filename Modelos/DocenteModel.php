@@ -13,7 +13,7 @@ class DocenteModel extends MasterModel
         $query = "DELETE d, p FROM persona p INNER JOIN ".static::$table." d on p.Id_documento=d.Id_documento WHERE d.id_documento='$id'";
         static::query($query);
     }
-    public static function getall($inicio,$fin)
+    public static function getAll($inicio,$fin)
 	{   
 		$query=("SELECT d.*,p.* FROM " . static::$table . " d INNER JOIN persona p on (d.id_documento=p.id_documento) ORDER BY p.id_documento limit $inicio,$fin"); 
         return static::query($query);
@@ -25,7 +25,7 @@ class DocenteModel extends MasterModel
     }
     public static function find($id)
     {
-        $query="SELECT p.*,d.* FROM " . static::$table . " d INNER JOIN persona p on (d.id_documento=p.id_documento)  WHERE p.id_documento='$id'";
+        $query="SELECT p.*,d.*,r.* FROM " . static::$table . " d INNER JOIN persona p on (d.id_documento=p.id_documento) INNER JOIN rol r on(p.id_rol=r.id_rol) WHERE p.id_documento='$id'";
         return static::query($query);  
     }
 

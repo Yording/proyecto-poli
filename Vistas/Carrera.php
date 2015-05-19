@@ -2,7 +2,7 @@
                         <div class="row">
                             <br>
                             <div class="col-sm-10 col-sm-offset-1">
-                                <form action="Carreras.php" class="form-horizontal" method="post">
+                                <form action="index.php?controller=Carrera&action=CreateOrUpdate" class="form-horizontal" method="post">
                                     <div class="form-group">
                                         <div class="col-sm-4 col-sm-offset-4">
                                             <input type="text" class="form-control" name="id" placeholder="<?php if(isset($id_carrera["id"])){echo $id_carrera["id"];} ?>" readonly="" value='<?php  if(isset($carreras_up)){echo $carreras_up['id_carrera'];}?>'>
@@ -26,10 +26,10 @@
                                     </div>
                                     <div class="form-group botones-formulario">
                                         <div class="col-xs-12 col-sm-3 col-sm-offset-3">
-                                            <button name="crud" class="btn btn-success" value="Carreras.php?action=registrar">Registrar</button>
+                                            <button name="crud" class="btn btn-success" value="insertar">Registrar</button>
                                         </div>
                                         <div class="col-xs-12 col-sm-3">
-                                            <button name="crud" class="btn btn-warning" value="Carreras.php?action=update">Editar</button>
+                                            <button name="crud" class="btn btn-warning" value="actualizar">Editar</button>
                                         </div>
                                     </div>
                                 </form>
@@ -63,36 +63,35 @@
                                             <span class="glyphicon glyphicon-pencil"></span> 
                                         </th>
                                     </tr>
-                                    <?php  while($carreras = mysql_fetch_assoc($lista_carreras)){  ?>
+                                    <?php  while($carrera = mysqli_fetch_assoc($carreras)){  ?>
                                     <tr>
                                         <td>
-                                            <?php ?>
-                                            <?php echo $carreras['id_carrera'] ?>
+                                            <?php echo $carrera['id_carrera'] ?>
                                         </td>
                                         <td>
-                                           <?php echo $carreras['nombre_carrera'] ?>
+                                           <?php echo $carrera['nombre_carrera'] ?>
                                         </td>
                                         <td>
-                                            <?php echo $carreras['numero_creditos'] ?>
+                                            <?php echo $carrera['numero_creditos'] ?>
                                           
                                         </td>
                                         <td>
-                                            <?php echo $carreras['valor_semestre'] ?>
+                                            <?php echo $carrera['valor_semestre'] ?>
                                         </td>
                                         <td>
-                                            <?php echo $carreras['numero_semestres'] ?>
+                                            <?php echo $carrera['numero_semestres'] ?>
                                         </td>
                                         <td>
-                                           <center><a class="btn btn-danger btn-delete" href="Carreras.php?action=delete&id=<?php echo $carreras['id_carrera'] ?>"><span class="glyphicon glyphicon-remove"></span></a> </center>
+                                           <center><a class="btn btn-danger btn-delete" href="index.php?controller=Carrera&action=Eliminar&id=<?php echo $carrera['id_carrera'] ?>"><span class="glyphicon glyphicon-remove"></span></a> </center>
                                         </td>
                                         <td>
-                                            <center><a class="btn btn-success btn-editar" href="Carreras.php?action=update&id=<?php echo $carreras['id_carrera'] ?>"><span class="glyphicon glyphicon-ok"></span> </a></center>
+                                            <center><a class="btn btn-success btn-editar" href="index.php?controller=Carrera&action=Actualizar&id=<?php echo $carrera['id_carrera'] ?>"><span class="glyphicon glyphicon-ok"></span> </a></center>
                                         </td>
                                     </tr>
                                     <?php }?>
                                 </table>
                                 <hr class="separator">
-                                <?php $pagination-> render();?>
+                                <?php  libcontroller::pagination_render('CarreraModel')->render(); ?>
                             </div>
                         </div>
                        <!-- Cierra Container-Fluid  -->

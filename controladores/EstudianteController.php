@@ -1,13 +1,14 @@
 <?php
    class EstudianteController extends MasterController {
 
-     static $modelo = 'EstudianteModel';
+     private static $modelo = 'EstudianteModel';
+     private static $nomArray="estudiantes_up";
+     private static $link='index.php?controller=Estudiante&action=registrar';
 
     public function getRegistrar() {
 
         $data['carreras']=CarreraModel::all();
-       
-        $data['students']=LibController::Zebra_Pagination('EstudianteModel');
+        $data['students']=LibController::Zebra_Pagination(static::$modelo);
          Session::validatePage('Estudiante', $data);
     }
 
@@ -24,7 +25,7 @@
         PersonaModel::$action($data);
         EstudianteModel::$action($data);
 
-        Redirect::to('index.php?controller=Estudiante&action=registrar');
+        Redirect::to(static::$link);
     }
     public function getEliminar() {
          if(isset($_GET['id']))
@@ -32,27 +33,23 @@
               $id = $_GET['id'];
               EstudianteModel::eliminar($id);
           }
-          Redirect::to('index.php?controller=Estudiante&action=registrar');
+          Redirect::to(static::$link);
     }
      public function getActualizar() {
           if(isset($_GET['id']))
            {
               $id = $_GET['id'];
-              $data['estudiantes_up'] = EstudianteModel::find($id);
-              $estudiantes_up=$data['estudiantes_up']->fetch_assoc();
+              $data[static::$nomArray] = EstudianteModel::find($id);
+              $estudiantes_up=$data[static::$nomArray]->fetch_assoc();
               $data['carreras']=CarreraModel::getAllActualizar($estudiantes_up['id_carrera']);
-              $data['students']=LibController::Zebra_Pagination('EstudianteModel');;
-              $data['estudiantes_up']=$estudiantes_up;
-              View::loadPage('Estudiante', $data);
+              $data['students']=LibController::Zebra_Pagination(static::$modelo);;
+              $data[static::$nomArray]=$estudiantes_up;
+               Session::validatePage('Estudiante', $data);
           }
           else
           {
-            Redirect::to('index.php?controller=Estudiante&action=registrar');
+            Redirect::to(static::$link);
           }
-    }
-
-    public function getIndex() {
-        echo "voy al index<br>";
     }
 
 }

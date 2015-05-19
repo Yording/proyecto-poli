@@ -15,13 +15,7 @@ Class LibController extends MasterController {
 		$inicio_paginacion=($pagination->get_page()-1) *$numero_paginacion;
         $pagination->records($count['count']);
         $pagination->records_per_page($numero_paginacion);
-        
-        
-        /*$data['pag1'] = ...
-        $data['pag2'] = ...
-                retri$ad*/
-        
-        return $modelo::getall($inicio_paginacion,$numero_paginacion);
+        return $modelo::getAll($inicio_paginacion,$numero_paginacion);
 	}
 	public function pagination_render($modelo)
 	{

@@ -118,7 +118,6 @@
                                     <?php  while($docente = mysqli_fetch_assoc($docentes)){  ?>
                                     <tr>
                                         <td>
-                                            <?php ?>
                                             <?php echo $docente['id_documento'] ?>
                                         </td>
                                         <td>

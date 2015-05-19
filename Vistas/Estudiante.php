@@ -115,7 +115,6 @@
                                     <?php  while($estudiante = mysqli_fetch_assoc($students)){  ?>
                                     <tr>
                                         <td>
-                                            <?php ?>
                                             <?php echo $estudiante['id_documento'] ?>
                                         </td>
                                         <td>
