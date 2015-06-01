@@ -155,7 +155,7 @@
                                     <?php }?>
                                 </table>
                                 <hr class="separator">
-                                  <?php  libcontroller::pagination_render('DocenteModel')->render(); ?>
+                                  <?php  lib::pagination_render('DocenteModel')->render(); ?>
                             </div>
                         </div>
                        <!-- Cierra Container-Fluid  -->

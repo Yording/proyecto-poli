@@ -6,9 +6,9 @@
                                     <div class="form-group">
                                         <div class="col-sm-4 col-sm-offset-4">
                                             <div class="input-group">
-                                              <input type="text" class="form-control" name='identificacion' placeholder="Documento Identidad" value='<?php if(isset($usuarios_up)){echo $usuarios_up['id_documento'];}?>'>
+                                              <input type="text" class="form-control" id="id "name='id' placeholder="Documento Identidad" value='<?php if(isset($usuarios_up)){echo $usuarios_up['id_documento'];}?>'>
                                               <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                                                <a class="btn btn-default" type="button" href="index.php?controller=Usuario&action=actualizar&id="><span class="glyphicon glyphicon-search"></span></a>
                                               </span>
                                             </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
@@ -106,7 +106,7 @@
                                     <?php }?>
                                 </table>
                                 <hr class="separator">
-                                <?php  libcontroller::pagination_render('UsuarioModel')->render(); ?>
+                                <?php  lib::pagination_render('UsuarioModel')->render(); ?>
                             </div>
                         </div>
                        <!-- Cierra Container-Fluid  -->

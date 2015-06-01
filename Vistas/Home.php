@@ -40,7 +40,7 @@
                                 <a class="btn btn-primary" id="dropdown-carreras">Carreras <span  class="glyphicon glyphicon-menu-down span-menu"></span></a>
                                 <ul class="sub-menu" id="menu-carreras">
                                     <li><a href="index.php?controller=Carrera&action=Registrar" class="btn botones-secundarios">Inscribir Carreras</a></li>
-                                    <li><a href="" class="btn botones-secundarios">Inscribir Docentes</a></li>
+                                    <li><a href="index.php?controller=CarreraDocente&action=Registrar" class="btn botones-secundarios">Inscribir Docentes</a></li>
                                 </ul>
                                 <a class="btn btn-primary" href="index.php?controller=Usuario&action=Registrar">Usuarios Sistema</a>
                                 <a class="btn btn-primary" href="index.php?controller=Docente&action=Registrar">Docentes</a>

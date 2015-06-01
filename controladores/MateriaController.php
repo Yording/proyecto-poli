@@ -1,12 +1,12 @@
 <?php
 
-   class CarreraController extends MasterController {
+   class MateriaController extends MasterController {
 
-     private static $modelo = 'CarreraModel';
-     private static $nomArray="carreras_up";
-     private static $link='index.php?controller=Carrera&action=registrar';
-     private static $view='Carrera';
-     private static $tableArray='carreras';
+     private static $modelo = 'MateriaModel';
+     private static $nomArray="materias_up";
+     private static $link='index.php?controller=Materia&action=registrar';
+     private static $view='Materia';
+     private static $tableArray='materias';
 
     public function getRegistrar() {
       
@@ -32,18 +32,24 @@
         //     }
         //     Session::deleteVar('action');
         // }
+        $data['carreras']=CarreraModel::all();
         $data[static::$tableArray]=Lib::Zebra_Pagination(static::$modelo);
-         Session::validatePage(static::$view, $data);
+        Session::validatePage(static::$view, $data);
     }
 
     public function postCreateOrUpdate($request) {
         $action=$request['crud'];
-        $data=['id_carrera'=>$request['id'],
+        $data=['id_materia'=>$request['id'],
         'nombre' => $request['nombre'],
         'creditos' => $request['creditos'],
-        'valor_semestre' =>$request['valor_semestre'],
-        'numero_semestre' => $request['numero_semestre']];
-        CarreraModel::$action($data);
+        'horas' =>$request['horas'],
+        'cupos' => $request['cupos'],
+        'ciclo' => $request['ciclo'],
+        'aula' => $request['aula'],
+        'docente'=>$request['docente'],
+        'carrera'=>$request['carrera'],
+        'descripcion' => $request['descripcion']];
+        MateriaModel::$action($data);
         $_SESSION['action']=$action;
         Redirect::to(static::$link);
     }
@@ -51,7 +57,7 @@
          if(isset($_GET['id']))
           {
               $id = $_GET['id'];
-              CarreraModel::eliminar($id);
+              MateriaModel::eliminar($id);
               Session::addVar('action','delete');
           }
           Redirect::to(static::$link);
@@ -60,10 +66,12 @@
           if(isset($_GET['id']))
            {
               $id = $_GET['id'];
-              $data[static::$nomArray] = CarreraModel::find($id);
-              $carreras_up=$data[static::$nomArray]->fetch_assoc();
+              $id_carrera=($_GET['carrera']!="")?$_GET['carrera']:1;
+              $data[static::$nomArray] = MateriaModel::find($id,$id_carrera);
+              $materias_up=$data[static::$nomArray]->fetch_assoc();
+              $data['carreras']=CarreraModel::getAllActualizar($materias_up['id_carrera']);
               $data[static::$tableArray]=Lib::Zebra_Pagination(static::$modelo);;
-              $data[static::$nomArray]=$carreras_up;
+              $data[static::$nomArray]=$materias_up;
               Session::validatePage(static::$view, $data);
           }
           else

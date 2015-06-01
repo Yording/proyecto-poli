@@ -5,7 +5,7 @@ class Session{
     private static $userVar='usuario';
     private static $linkIndex="index.php?controller=Login&action=Ingresar";
    
-    public static function start(){
+    public  function start(){
        session_start();
     }
     // agregar variable de Sesion 
@@ -14,10 +14,11 @@ class Session{
     }  
     // Eliminar variable de Sesion
     public static function deleteVar($varNombre){
-        
-    	 // var_dump($varNombre);
-      // exit;
-        unset($_SESSION[$varNombre]);
+        if(isset($_SESSION[$varNombre]))
+         {
+    	// Session::start();
+            unset($_SESSION[$varNombre]);
+        }
     }  
     public static function deleteAllVar()
     {
@@ -36,9 +37,20 @@ class Session{
            Redirect::to(static::$linkIndex);
         }
     }
+    public static function validateVar($varNombre)
+    {
+        // Session::start();
+       
+         if(isset($_SESSION[$varNombre]))
+         {
+        //       var_dump($_SESSION[$varNombre]);
+        // exit;
+            return $_SESSION[$varNombre];
+         }
+    }
      public static function validatePage($view,$data)
     {
-        Session::start();
+         Session::start();
          if(isset($_SESSION[static::$userVar]))
         {
              View::loadPage($view,$data);

@@ -146,7 +146,7 @@
                                     <?php }?>
                                 </table>
                                 <hr class="separator">
-                                <?php  libcontroller::pagination_render('EstudianteModel')->render(); ?>
+                                <?php  lib::pagination_render('EstudianteModel')->render(); ?>
                             </div>
                         </div>
                        <!-- Cierra Container-Fluid  -->

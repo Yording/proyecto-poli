@@ -4,12 +4,13 @@
      private static $modelo = 'EstudianteModel';
      private static $nomArray="estudiantes_up";
      private static $link='index.php?controller=Estudiante&action=registrar';
-
+     private static $view='Estudiante';
+     private static $tableArray='students';
     public function getRegistrar() {
 
         $data['carreras']=CarreraModel::all();
-        $data['students']=LibController::Zebra_Pagination(static::$modelo);
-         Session::validatePage('Estudiante', $data);
+        $data[static::$tableArray]=Lib::Zebra_Pagination(static::$modelo);
+         Session::validatePage(static::$view, $data);
     }
 
     public function postCreateOrUpdate($request) {
@@ -42,9 +43,9 @@
               $data[static::$nomArray] = EstudianteModel::find($id);
               $estudiantes_up=$data[static::$nomArray]->fetch_assoc();
               $data['carreras']=CarreraModel::getAllActualizar($estudiantes_up['id_carrera']);
-              $data['students']=LibController::Zebra_Pagination(static::$modelo);;
+              $data[static::$tableArray]=Lib::Zebra_Pagination(static::$modelo);;
               $data[static::$nomArray]=$estudiantes_up;
-               Session::validatePage('Estudiante', $data);
+               Session::validatePage(static::$view, $data);
           }
           else
           {

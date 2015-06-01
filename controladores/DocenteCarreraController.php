@@ -1,11 +1,11 @@
 <?php
-   class DocenteController extends MasterController {
+   class DocenteCarreraController extends MasterController {
 
-     private static $modelo = 'DocenteModel';
+     private static $modelo = 'DocenteCarreraModel';
      private static $nomArray="docentes_up";
-     private static $link='index.php?controller=Docente&action=registrar';
-     private static $view='Docente';
-     private static $tableArray='docentes';
+     private static $link='index.php?controller=DocenteCarrera&action=registrar';
+     private static $view='DocenteCarrera';
+     private static $tableArray='docentesCarreras';
     public function getRegistrar() {
    
         $data[static::$tableArray]=Lib::Zebra_Pagination(static::$modelo);

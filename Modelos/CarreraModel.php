@@ -6,6 +6,8 @@ class CarreraModel extends MasterModel
 
 	    public static function getAllActualizar($id)
 		{
+			// var_dump("SELECT id_carrera,nombre_carrera FROM ". static::$table." ORDER BY id_carrera='$id' desc");
+			// exit;
 		$query="SELECT id_carrera,nombre_carrera FROM ". static::$table." ORDER BY id_carrera='$id' desc";
 		return static::query($query);
 		}

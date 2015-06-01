@@ -5,10 +5,12 @@ class UsuarioController extends MasterController {
       private static $modelo = 'UsuarioModel';
       private static $nomArray="usuarios_up";
       private static $link='index.php?controller=Usuario&action=registrar';
+      private static $view='Usuario';
+      private static $tableArray='usuarios';
 
     public function getRegistrar() {
-        $data['usuarios']=LibController::Zebra_Pagination(static::$modelo);
-         Session::validatePage('Usuario', $data);
+        $data[static::$tableArray]=Lib::Zebra_Pagination(static::$modelo);
+         Session::validatePage(static::$view, $data);
     }
 
      public function postActualizar($request) {
@@ -27,9 +29,9 @@ class UsuarioController extends MasterController {
               $rol=$_GET['rol'];
               $data[static::$nomArray] = ($rol=="Estudiante") ? EstudianteModel::find($id):DocenteModel::find($id);
               $usuarios_up=$data[static::$nomArray]->fetch_assoc();
-              $data['usuarios']=LibController::Zebra_Pagination(static::$modelo);;
+              $data[static::$tableArray]=Lib::Zebra_Pagination(static::$modelo);;
               $data[static::$nomArray]=$usuarios_up;
-               Session::validatePage('Usuario', $data);
+               Session::validatePage(static::$view, $data);
           }
           else
           {

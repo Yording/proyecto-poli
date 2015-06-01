@@ -447,7 +447,8 @@ body
 }
 .alertas
 {
-   max-width: 80%;
+   margin-left: 17%;
+   padding:20px;
 }
 .botones-secundarios
 {
@@ -517,6 +518,12 @@ body
    background-color: #fff;
    color:black;
 }
+
+/*.next,.previous
+{
+  padding: 6px 12px 12px 12px !important;*/
+/*}*/
+
 /*.pagination .active>a 
 {
    z-index: 2;
